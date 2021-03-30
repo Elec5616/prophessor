@@ -7,7 +7,7 @@ import getpass
 from selenium import webdriver
 
 #------------------------------------------------
-default_target = "https://canvas.sydney.edu.au/courses/14200/groups"
+default_target = "https://canvas.sydney.edu.au/courses/31151/groups"
 #------------------------------------------------
 # Useage: 
 # python canvas_group_scraper.py <target groups page>
@@ -19,10 +19,11 @@ def scrape(target):
 
     driver = webdriver.Firefox()
     
-    print("Canvas login creds:")
-
     print("Loading login portal")
     driver.get("https://canvas.sydney.edu.au/")
+    """
+    print("Canvas login creds:")
+
 
     username = input("Enter your canvas username: ")
     password = getpass.getpass(prompt="Enter your canvas password: ")
@@ -46,6 +47,8 @@ def scrape(target):
     time.sleep(2)
 
     print("Logged in!")
+    """
+    username = input("Press enter when logged in.")
     driver.get(target)
 
     category_selectors = driver.find_elements_by_class_name("group-category-tab-link")
@@ -82,7 +85,7 @@ def extract_groups(driver):
 
         i.click()
         # Waiting for the response
-        time.sleep(0.3)
+        time.sleep(2.5)
 
         group_name = i.text
         groups[group_name] = []
