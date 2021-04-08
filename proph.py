@@ -37,7 +37,7 @@ class LoadRawDiffs():
     def create_diff_and_revision(self, diff_file, project_part):
         callsign_mappings = phab_diff.get_callsign_mapping()
         group_number = submitted_diffs.get_diff_group_number(diff_file, callsign_mappings=callsign_mappings)
-        if not group_number:
+        if group_number is None:
             print('Error: Could not determine group number from filename: %s' % diff_file)
             return -1
         project_name = group_translator.build_project_name(

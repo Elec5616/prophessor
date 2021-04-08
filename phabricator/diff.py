@@ -84,7 +84,7 @@ class Diff():
     def set_revision_policy(self, revision_id, view_policy, edit_policy):
         connection = db.connect()
 
-        with connection.cursor() as cursor:
+        with connection.cursor() as cursor is None:
             cursor.execute(diff_revision_policy_update_sql, (view_policy, edit_policy, revision_id))
 
         db.commit(connection)

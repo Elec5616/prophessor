@@ -7,7 +7,7 @@ import getpass
 from selenium import webdriver
 
 #------------------------------------------------
-default_target = "https://canvas.sydney.edu.au/courses/31151/groups"
+default_target = "https://canvas.sydney.edu.au/courses/{CANVAS_ID}/groups"
 #------------------------------------------------
 # Useage: 
 # python canvas_group_scraper.py <target groups page>
@@ -111,7 +111,7 @@ def csv_groups(groups, group_file):
         for count, group in enumerate(groups):
             if len(groups[group]) > 0:
                 for member in groups[group]:
-                    group_line = ['group_{}'.format(count ), member]
+                    group_line = ['Project_gc_Group_gc_{}'.format(count ), member]
                     csv_writer.writerow(group_line)
     print("CSV written")
     return
