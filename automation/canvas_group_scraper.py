@@ -111,7 +111,7 @@ def csv_groups(groups, group_file):
         for count, group in enumerate(groups):
             if len(groups[group]) > 0:
                 for member in groups[group]:
-                    group_line = ['Project_gc_Group_gc_{}'.format(count ), member]
+                    group_line = ['Project_gc_Group_gc_{}'.format(count + 1), member]
                     csv_writer.writerow(group_line)
     print("CSV written")
     return
