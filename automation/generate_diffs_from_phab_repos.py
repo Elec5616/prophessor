@@ -5,7 +5,7 @@ import errno
 
 class GenerateDiffs():
 
-    def from_phabricator_repos(self, path_to_repos, path_for_diffs, to_date, branch="master"):
+    def from_phabricator_repos(self, from_commit, path_to_repos, path_for_diffs, to_date, branch="master"):
         target_dir = path_to_repos
         dest_dir = path_for_diffs
 
@@ -16,7 +16,9 @@ class GenerateDiffs():
             if e.errno != errno.EEXIST:
                 raise
 
-        from_commit = "`git rev-list master | tail -n 1`"
+        if from_commit is None or from_commit == "_":
+            from_commit = "`git rev-list master | tail -n 1`"
+
         to_commit = "`git log %s --before \"%s\" --pretty=%%h | head -n 1`" % (branch, to_date)
         # to_commit = "`git rev-list master | head -n 1`"
 

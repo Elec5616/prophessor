@@ -413,12 +413,13 @@ elif arg_task == 'grant-student-diff-access':
     thanks()
 
 elif arg_task == 'generate-diffs':
-    # python proph.py generate-diffs 2016-09-25 /var/repo /shared_volume/generated_diffs
-    date = sys.argv[2]
-    repos = sys.argv[3]
-    output = sys.argv[4]
+    # python proph.py generate-diffs <from_commit> 2016-09-25 /var/repo /shared_volume/generated_diffs
+    from_commit = sys.argv[2]
+    date = sys.argv[3]
+    repos = sys.argv[4]
+    output = sys.argv[5]
     action = GenerateDiffs()
-    action.from_phabricator_repos(repos, output, date)
+    action.from_phabricator_repos(from_commit, repos, output, date)
     thanks()
 
 

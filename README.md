@@ -239,13 +239,13 @@ Example: `$ python proph.py grant-student-diff-access 1`
 ### generate-diffs
 
 ```
-$ python proph.py generate-diffs <final-submission-date> <phabricator repos dir> <dir to output diff files>
+$ python proph.py generate-diffs <from commit> <final-submission-date> <phabricator repos dir> <dir to output diff files>
 ```
 
 _Requires the RESTful API, Arcanist and access to the Phabricator database_
 
 Scan the `<phabricator repos dir>` and attempt the following on each repository it finds:
- - Obtain the earliest commit on the `master` branch
+ - If `<from commit>` is "_", then obtain the earliest commit on the `master` branch
  - Obtain the latest commit on the `master` branch _before_ the specified `<final submission date>`
  - Create a differential file inside the `<dir to output diff files>` with respect to the two commits mentioned above.
 
